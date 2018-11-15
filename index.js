@@ -9,11 +9,11 @@ module.exports = (req, res) => {
             url: req.url
         },
         template: `<div> The URL here is... {{ url }} </div>`
-    })
+    });
 
     renderer.renderToString(app, (err, html) => {
         if (err) {
-            res.status(500).end('shrug life')
+            res.status(500).end('Internal Server Error');
         }
 
         res.end(
@@ -23,6 +23,6 @@ module.exports = (req, res) => {
                 <body> ${html} </body>
             </html>
             `
-        )
+        );
     });
 }
