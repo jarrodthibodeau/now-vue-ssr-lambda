@@ -1,14 +1,16 @@
 const renderer = require('vue-server-renderer').createRenderer();
 const Vue = require('vue');
+const { parse } = require('url');
 
 module.exports = (req, res) => {
-    console.log(req);
+    const { query } = parse(req.url, true);
+    const { character = 'not waluigi' } = query;
 
     const app = new Vue({
         data: {
-            url: req.url
+            character
         },
-        template: `<div> The URL here is... {{ url }} </div>`
+        template: `<div> Your favorite super smash brother is.... ${{character}} </div>`
     });
 
     renderer.renderToString(app, (err, html) => {
