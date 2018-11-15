@@ -2,11 +2,13 @@ const renderer = require('vue-server-renderer').createRenderer();
 const Vue = require('vue');
 
 module.exports = (req, res) => {
+    console.log(req);
+
     const app = new Vue({
         data: {
             url: req.url
         },
-        template: `<div> The URL here is... {{ url }}`
+        template: `<div> The URL here is... {{ url }} </div>`
     })
 
     renderer.renderToString(app, (err, html) => {
@@ -15,8 +17,11 @@ module.exports = (req, res) => {
         }
 
         res.end(
-            `
-                ${html}
+            `<!DOCTYPE html>
+            <html lang="en">
+                <head><title>Hello</title></head>
+                <body> ${html} </body>
+            </html>
             `
         )
     });
