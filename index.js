@@ -6,7 +6,7 @@ module.exports = (req, res) => {
     const { query } = parse(req.url, true);
     const { character = 'not waluigi' } = query;
 
-    console.log(query);
+    console.log(character);
 
     const app = new Vue({
         data: {
