@@ -6,13 +6,11 @@ module.exports = (req, res) => {
     const { query } = parse(req.url, true);
     const { character = 'not waluigi' } = query;
 
-    console.log(character);
-
     const app = new Vue({
         data: {
             character
         },
-        template: `<div> Your favorite super smash brother is.... ${{ character }} </div>`
+        template: `<div> Your favorite super smash brother is.... {{ character }} </div>`
     });
 
     renderer.renderToString(app, (err, html) => {
