@@ -4,7 +4,7 @@ const { parse } = require('url');
 
 module.exports = (req, res) => {
     const { query } = parse(req.url, true);
- 
+    const { character = 'not waluigi' } = query;
 
     console.log(query);
 
